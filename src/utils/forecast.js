@@ -12,10 +12,14 @@ const forecast = ({lat, lon}, callback) => {
 
             const temperatur = response.body.current.temp
             const uvi = response.body.current.uvi
+            const pressure = response.body.current.pressure
+            const humidity = response.body.current.humidity
 
             callback(undefined, {
                 Temperatur: temperatur,
-                Uvi: uvi
+                Uvi: uvi,
+                Pressure: pressure,
+                Humidity: humidity
             })
         }
     })

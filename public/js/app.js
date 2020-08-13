@@ -8,6 +8,8 @@ const search = document.querySelector('Input')
 
 const messageOne = document.querySelector('#message-1')
 const messageTwo = document.querySelector('#message-2')
+const messageThree = document.querySelector('#message-3')
+const messageFour = document.querySelector('#message-4')
 
 weatherForm - addEventListener('submit', (e) => {
     e.preventDefault()
@@ -16,15 +18,21 @@ weatherForm - addEventListener('submit', (e) => {
     const url = '/weather?address=' + encodeURIComponent(location)
 
     messageOne.textContent = 'Loading'
+    messageTwo.textContent = ''
+    messageThree.textContent = ''
+    messageFour.textContent = ''
 
     fetch(url).then((response) => {
         response.json().then((data) => {
-            if (data.message || data.error) {
-                messageOne.textContent = data.message + data.error
+            if (data.error) {
+                messageOne.textContent = data.error 
+            } else if (data.message) {
+                messageOne.textContent = data.message
             } else {
-                messageOne.textContent = 'Aktuelle Temperatur in ' + data.location + ' ist ' + data.temperature + ' Grad Celsius'
-                messageTwo.textContent = 'Aktueller UV-Index ist ' + data.uvi
-                console.log(data)
+                messageOne.textContent = 'Temperatur in ' + data.location + ' ist ' + data.temperature + ' Grad Celsius'
+                messageTwo.textContent = 'UV-Index ist ' + data.uvi
+                messageThree.textContent = 'Luftfeuchte ist ' + data.humidity + ' %'
+                messageFour.textContent = 'Luftdruck ist ' + data.pressure + ' mBar'
             }
         })
     })

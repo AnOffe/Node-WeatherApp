@@ -1,12 +1,14 @@
 body {
-    color: #333333;
+    background: #224941 url('../img/bg.jpg') no-repeat center center/cover;
+    color: #eeeeee;
     font-family: Arial;
-    max-width: 650px;
+    max-width: 850px;
     margin: 0 auto;
     padding: 0 16px;
     display: flex;
     flex-direction: column;
     min-height: 100vh;
+    
 }
 
 .main-content {
@@ -26,13 +28,40 @@ header {
     margin-bottom: 48px;
 }
 
+.titel {
+    animation: textwelle 2s;  
+}
+
+@keyframes textwelle {
+    0 {
+      font-size: 0;
+      opacity: 0;
+    }
+    70%{
+        font-size: 18px;
+        opacity: 1;  
+    }
+    80%{
+        font-size: 26px;
+        opacity: 1;  
+    }
+    90% {
+      font-size: 36px;
+      opacity: 1;
+    }
+    100% {
+      font-size: 48px;
+      opacity: 1;	
+    }
+  }
+
 h1 {
-    font-size: 64px;
+    font-size: 48px;
     margin-bottom: 16px;
 }
 
 header a {
-    color: #888888;
+    color: #dddddd;
     margin-right: 16px;
     text-decoration: none;
 }
